@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  ssoc-api:
+    container_name: ssoc-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - "/opt/ssoc-next/ssoc-api-env:/home/node/app/.env"

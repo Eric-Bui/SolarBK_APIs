@@ -1,0 +1,20 @@
+before_script:
+  - docker info
+
+image: docker
+
+services:
+  - docker:dind
+
+stages:
+  - deploy
+
+step-deploy-prod:
+  stage: deploy
+  only:
+    - production
+  script:
+    - docker-compose build --no-cache
+    - docker-compose up -d
+  environment: production
+  when: on_success
